@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <record id="seq_danh_gia_ncc" model="ir.sequence">
+            <field name="name">Mã phiếu đánh giá NCC</field>
+            <field name="code">dc_ncc</field>
+            <field name="prefix">DCNCC</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+        </record>
+
+
+        <!-- Tree View -->
+        <record id="view_danh_gia_ncc_tree" model="ir.ui.view">
+            <field name="name">danh.gia.ncc.tree</field>
+            <field name="model">danh.gia.ncc</field>
+            <field name="arch" type="xml">
+                <tree string="Đánh giá nhà cung cấp">
+                    <field name="ma_phieu"/>
+                    <field name="ten_ncc"/>
+                    <field name="email"/>
+                    <field name="dien_thoai"/>
+                    <field name="nganh_kd"/>
+                    <field name="ky_dg"/>
+                    <field name="ngay_dg"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_danh_gia_ncc_form" model="ir.ui.view">
+            <field name="name">danh.gia.ncc.form</field>
+            <field name="model">danh.gia.ncc</field>
+            <field name="arch" type="xml">
+                <form string="Đánh giá nhà cung cấp">
+                    <sheet>
+                        <div style="display: flex; justify-content: flex-end; align-items: center;">
+                            <button name="action_draft" type="object" class="btn-secondary">NHÁP</button>
+                            <button name="action_validate" type="object" class="btn-secondary">CHỜ XÁC NHẬN</button>
+                            <button name="action_confirm" type="object" class="btn-secondary">ĐÃ XÁC NHẬN</button>
+                            <button name="action_reject" type="object" class="btn-secondary">TỪ CHỐI</button>
+                            <button name="action_cancel" type="object" class="btn-secondary">HỦY</button>
+                        </div>
+                    </sheet>
+
+                    <sheet>
+                        <h1>
+                            <field name="ma_phieu"/>
+                        </h1>
+
+                        <group string="THÔNG TIN CHUNG">
+                            <group>
+                                <field name="ten_ncc"/>
+                                <field name="email"/>
+                                <field name="dien_thoai"/>
+                                <field name="nganh_kd"/>
+                            </group>
+                            <group>
+                                <field name="ky_dg"/>
+                                <field name="ngay_dg"/>
+                                <field name="quan_ly"/>
+                            </group>
+                        </group>
+
+                        <group string="CHI TIẾT ĐÁNH GIÁ">
+                            <field name="ct_danh_gia_chi_tiet_ids">
+                                <tree create="false" delete="false" editable="bottom">
+                                    <field name="tieu_chi_dg"  readonly="True"/>
+                                    <field name="da_duoc_dg"/>
+                                    <field name="diem_dg" attrs="{'invisible': [('da_duoc_dg', '=', False)]}"
+                                           widget="priority"/>
+                                </tree>
+                            </field>
+                        </group>
+
+                        <group string="BÁO CÁO ĐÁNH GIÁ">
+                            <field name="tong_diem_cuoi_cung" readonly="1"/>
+                            <field name="kq_danh_gia" readonly="1" widget="priority"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action-->
+        <record id="action_danh_gia_ncc" model="ir.actions.act_window">
+            <field name="name">Đánh giá nhà cung cấp</field>
+            <field name="res_model">danh.gia.ncc</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

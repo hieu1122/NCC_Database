@@ -1,0 +1,48 @@
+<odoo>
+    <record id="phan_quyen_tieu_chi_dg" model="ir.rule">
+        <field name="name">Phân Quyền Tiêu Chí Dánh Giá</field>
+        <field name="model_id" ref="model_tieu_chi_dg"/>
+        <field name="domain_force">
+            ['|', ('user_id', '=', user.id), ('user_id', '=', False)]
+        </field>
+        <field name="groups" eval="[(4, ref('nhom_quan_ly_ncc_nguoi_dung')), (4, ref('nhom_quan_ly_ncc_quan_tri'))]"/>
+    </record>
+
+    <record id="phan_quyen_danh_gia_ncc" model="ir.rule">
+        <field name="name">Phân Quyền Đánh Giá Ncc</field>
+        <field name="model_id" ref="model_danh_gia_ncc"/>
+        <field name="domain_force">
+            ['|', ('quan_ly', '=', user.id), ('quan_ly', '=', False)]
+        </field>
+        <field name="groups" eval="[(4, ref('nhom_quan_ly_ncc_nguoi_dung')), (4, ref('nhom_quan_ly_ncc_quan_tri'))]"/>
+    </record>
+
+    <record id="phan_quyen_danh_gia_ncc" model="ir.rule">
+        <field name="name">Phân Quyền Đánh Giá Ncc</field>
+        <field name="model_id" ref="model_danh_gia_ncc"/>
+        <field name="domain_force">
+            ['|', ('user_id', '=', user.id), ('user_id', '=', False)]
+        </field>
+        <field name="groups" eval="[(4, ref('nhom_quan_ly_ncc_nguoi_dung')), (4, ref('nhom_quan_ly_ncc_quan_tri'))]"/>
+    </record>
+
+    <record id="phan_quyen_ct_danh_gia_ncc" model="ir.rule">
+        <field name="name">Phân Quyền Chi Tiết Đánh Giá Ncc</field>
+        <field name="model_id" ref="model_ct_danh_gia_ncc"/>
+        <field name="domain_force">
+            ['|', ('user_id', '=', user.id), ('user_id', '=', False)]
+        </field>
+        <field name="groups" eval="[(4, ref('nhom_quan_ly_ncc_nguoi_dung')), (4, ref('nhom_quan_ly_ncc_quan_tri'))]"/>
+    </record>
+
+    <record id="phan_quyen_thong_tin_ncc" model="ir.rule">
+        <field name="name">Phân Quyền Thông Tin Ncc</field>
+        <field name="model_id" ref="model_thong_tin_ncc"/>
+        <field name="domain_force">
+            ['|', ('user_id', '=', user.id), ('user_id', '=', False)]
+        </field>
+        <field name="groups" eval="[(4, ref('nhom_quan_ly_ncc_nguoi_dung')), (4, ref('nhom_quan_ly_ncc_quan_tri'))]"/>
+    </record>
+
+
+</odoo>

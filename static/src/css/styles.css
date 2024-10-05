@@ -1,0 +1,13 @@
+.btn-secondary {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    background-color: #f0f0f0; /* Change as needed */
+    color: #333; /* Change as needed */
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0; /* Change as needed for hover effect */
+}

@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Group for Users -->
+    <record id="nhom_quan_ly_ncc_nguoi_dung" model="res.groups">
+        <field name="name">Nhóm Người Dùng</field>
+    </record>
+
+    <!-- Group for Managers -->
+    <record id="nhom_quan_ly_ncc_quan_tri" model="res.groups">
+        <field name="name">Nhóm Quản Trị</field>
+    </record>
+
+</odoo>

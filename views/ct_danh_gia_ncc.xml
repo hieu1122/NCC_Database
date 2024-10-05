@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+        <!-- Tree View -->
+        <record id="view_ct_danh_gia_ncc_tree" model="ir.ui.view">
+            <field name="name">ct.danh.gia.ncc.tree</field>
+            <field name="model">ct.danh.gia.ncc</field>
+            <field name="arch" type="xml">
+                <tree string="Chi tiết đánh giá nhà cung cấp">
+                    <field name="ct_danh_gia_ncc" />
+                    <field name="tieu_chi_dg" />
+                    <field name="da_duoc_dg" />
+                    <field name="diem_dg" widget="priority"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_ct_danh_gia_ncc_form" model="ir.ui.view">
+            <field name="name">ct.danh.gia.ncc.form</field>
+            <field name="model">ct.danh.gia.ncc</field>
+            <field name="arch" type="xml">
+                <form string="Chi tiết đánh giá nhà cung cấp">
+                    <sheet>
+                        <group>
+                            <field name="ct_danh_gia_ncc" />
+                            <field name="tieu_chi_dg" />
+                            <field name="da_duoc_dg" />
+                            <field name="diem_dg" attrs="{'invisible': [('da_duoc_dg', '=', False)]}"
+                                           widget="priority"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_ct_danh_gia_ncc" model="ir.actions.act_window">
+            <field name="name">Chi tiết đánh giá nhà cung cấp</field>
+            <field name="res_model">ct.danh.gia.ncc</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
