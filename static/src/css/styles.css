@@ -15,3 +15,7 @@
 .no_border {
     border: none; /* Loại bỏ viền */
 }
+.o_horizontal_statusbar {
+    display: flex;
+    flex-direction: row;  /* Hiển thị theo hàng ngang */
+}

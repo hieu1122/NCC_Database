@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.addons.test_convert.tests.test_env import record
 
 
 class DanhGiaNCC(models.Model):
@@ -24,7 +25,7 @@ class DanhGiaNCC(models.Model):
     user_id = fields.Many2one('res.users', string='User')
 
     ct_danh_gia_chi_tiet_ids = fields.One2many(
-        'ct.danh.gia.ncc', 'ct_danh_gia_ncc', string='')
+        'ct.danh.gia.ncc', 'ct_danh_gia_ncc', string='Đánh giá chi tiết')
 
     tong_diem_cuoi_cung = fields.Float(
         string='Tổng điểm cuối cùng',
@@ -42,29 +43,31 @@ class DanhGiaNCC(models.Model):
     @api.model
     def create(self, vals):
         if 'ma_phieu' not in vals:
-            existing_numbers = [
-                int(record.ma_phieu[8:]) for record in self.search([])
+            existing_number=[
+                int(record.ma_phieu[6:]) for record in self.search([])
                 if record.ma_phieu.startswith('DGNCC')
             ]
-            next_number = 1
-            while next_number in existing_numbers:
-                next_number += 1
+
+            next_number=1
+            for next_number in existing_number:
+                next_number+=1
 
             vals['ma_phieu'] = f'DGNCC{next_number:04}'
 
-        record = super(DanhGiaNCC, self).create(vals)
+            record=super(DanhGiaNCC, self).create(vals)
 
-        tieu_chi_danh_gia = self.env['tieu.chi.dg'].search([])
+            tieu_chi_danh_gia=self.env['tieu.chi.dg'].search([])
 
-        for tieu_chi in tieu_chi_danh_gia:
-            self.env['ct.danh.gia.ncc'].create({
-                'ct_danh_gia_ncc': record.id,
-                'tieu_chi_dg': tieu_chi.id,
-                'da_duoc_dg': False,
-                'diem_dg': None,
-            })
+            for tieu_chi in tieu_chi_danh_gia:
+                self.env('ct.danh.gia.ncc').create({
+                    'ct_danh_gia_ncc':record.id,
+                    'tieu_chi_dg':tieu_chi.id,
+                    'da_duoc_dg':False,
+                    'diem_dg':None
+                })
 
-        return record
+            return record
+
 
 
     def action_confirm(self):

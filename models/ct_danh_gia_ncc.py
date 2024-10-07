@@ -30,16 +30,15 @@ class CtDanhGiaNcc(models.Model):
     @api.depends('diem_dg')
     def _compute_tong_diem_cuoi_cung(self):
         for record in self:
-            total_score = 0
-            count = 0
+            total_score=0
+            count=0
             for detail in record.ct_danh_gia_ncc.ct_danh_gia_chi_tiet_ids:
-                if detail.da_duoc_dg and detail.diem_dg:
-                    total_score += int(detail.diem_dg)
-                    count += 1
-            if count > 0:
-                record.tong_diem_cuoi_cung = total_score / count
-            else:
-                record.tong_diem_cuoi_cung = 0
+                total_score+=int(detail.diem_dg)
+                count+=1
+            if count>0:
+                record.tong_diem_cuoi_cung=total_score/count
+            else :
+                record.tong_diem_cuoi_cung=0
 
     @api.depends('tong_diem_cuoi_cung')
     def _compute_kq_danh_gia(self):

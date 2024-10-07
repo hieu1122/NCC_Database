@@ -41,7 +41,6 @@
                     </sheet>
 
                     <sheet>
-                        <field name="trang_thai" invisible="1"/>
                         <h1>
                             <field name="ma_phieu"/>
                         </h1>
@@ -62,10 +61,11 @@
 
                         <group string="CHI TIẾT ĐÁNH GIÁ">
                             <field name="ct_danh_gia_chi_tiet_ids">
-                                <tree create="false" delete="false" editable="bottom" >
-                                    <field name="tieu_chi_dg" readonly="True" nolink="1"/>
-                                    <field name="da_duoc_dg"/>
-                                    <field name="diem_dg" attrs="{'invisible': [('da_duoc_dg', '=', False)]}"
+                                <tree create="false" delete="false" editable="bottom">
+                                    <field name="tieu_chi_dg" readonly="True" nolink="1" nolabel="1"/>
+                                    <field name="da_duoc_dg" nolabel="1"/>
+                                    <field name="diem_dg" nolabel="1"
+                                           attrs="{'invisible': [('da_duoc_dg', '=', False)]}"
                                            widget="priority"/>
                                 </tree>
                             </field>
