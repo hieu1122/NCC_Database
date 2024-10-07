@@ -13,12 +13,6 @@
               action="action_danh_gia_ncc"
     />
 
-    <menuitem id="ct_danh_gia_ncc_menu"
-              name="Chi tiết đánh giá ncc"
-              parent="menu_review_supplier"
-              action="action_ct_danh_gia_ncc"
-    />
-
     <menuitem id="thong_tin_ncc_menu"
               name="Thông tin nhà cung cấp"
               parent="menu_review_supplier"

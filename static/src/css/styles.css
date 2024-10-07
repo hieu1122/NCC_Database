@@ -2,12 +2,16 @@
     padding: 10px 20px;
     margin: 0 5px;
     border: none;
-    background-color: #f0f0f0; /* Change as needed */
-    color: #333; /* Change as needed */
+    background-color: #f0f0f0;
+    color: #333;
     cursor: pointer;
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 4px;
 }
 
 .btn-secondary:hover {
-    background-color: #e0e0e0; /* Change as needed for hover effect */
+    background-color: #e0e0e0;
+}
+
+.no_border {
+    border: none; /* Loại bỏ viền */
 }

@@ -2,10 +2,9 @@
     <data>
         <record id="seq_danh_gia_ncc" model="ir.sequence">
             <field name="name">Mã phiếu đánh giá NCC</field>
-            <field name="code">dc_ncc</field>
-            <field name="prefix">DCNCC</field>
+            <field name="code">dg_ncc</field>
+            <field name="prefix">DGNCC</field>
             <field name="padding">4</field>
-            <field name="number_next">1</field>
         </record>
 
 
@@ -34,16 +33,15 @@
             <field name="arch" type="xml">
                 <form string="Đánh giá nhà cung cấp">
                     <sheet>
-                        <div style="display: flex; justify-content: flex-end; align-items: center;">
-                            <button name="action_draft" type="object" class="btn-secondary">NHÁP</button>
-                            <button name="action_validate" type="object" class="btn-secondary">CHỜ XÁC NHẬN</button>
-                            <button name="action_confirm" type="object" class="btn-secondary">ĐÃ XÁC NHẬN</button>
-                            <button name="action_reject" type="object" class="btn-secondary">TỪ CHỐI</button>
-                            <button name="action_cancel" type="object" class="btn-secondary">HỦY</button>
-                        </div>
+                        <group>
+                            <field name="trang_thai" widget="statusbar"
+                                   statusbar_visible="draft,waiting,confirmed,rejected,cancelled"
+                                   options="{'clickable': True}"/>
+                        </group>
                     </sheet>
 
                     <sheet>
+                        <field name="trang_thai" invisible="1"/>
                         <h1>
                             <field name="ma_phieu"/>
                         </h1>
@@ -64,8 +62,8 @@
 
                         <group string="CHI TIẾT ĐÁNH GIÁ">
                             <field name="ct_danh_gia_chi_tiet_ids">
-                                <tree create="false" delete="false" editable="bottom">
-                                    <field name="tieu_chi_dg"  readonly="True"/>
+                                <tree create="false" delete="false" editable="bottom" >
+                                    <field name="tieu_chi_dg" readonly="True" nolink="1"/>
                                     <field name="da_duoc_dg"/>
                                     <field name="diem_dg" attrs="{'invisible': [('da_duoc_dg', '=', False)]}"
                                            widget="priority"/>

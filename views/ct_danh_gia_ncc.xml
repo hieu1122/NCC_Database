@@ -10,7 +10,8 @@
                     <field name="ct_danh_gia_ncc" />
                     <field name="tieu_chi_dg" />
                     <field name="da_duoc_dg" />
-                    <field name="diem_dg" widget="priority"/>
+                    <field name="diem_dg" attrs="{'invisible': [('da_duoc_dg', '=', False)]}"
+                                           widget="priority"/>
                 </tree>
             </field>
         </record>
